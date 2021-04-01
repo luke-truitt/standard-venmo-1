@@ -22,17 +22,27 @@ import { useHistory, useLocation } from "react-router-dom";
 import Header from "../header/Header";
 import React, { useRef, useState, useEffect, forwardRef } from "react";
 // import { PageView, initGA, Event } from "../tracking/Tracking";
-
+import * as emailjs from "emailjs-com";
 import ben from "./../../images/home/ben.png";
-// const trackingId = "UA-189058741-1";
 const {
   REACT_APP_API_BASE_URL,
   REACT_APP_WAITLIST_URL,
   REACT_APP_CALCULATOR_URL,
+  REACT_APP_EMAILJS_USER_ID, 
+  REACT_APP_EMAILJS_SERVICE_ID,
+  REACT_APP_PAGE_ID
 } = process.env;
+
+const USER_ID = REACT_APP_EMAILJS_USER_ID;
+const TEMPLATE_ID = "template_b3u2bhe";
+const SERVICE_ID = REACT_APP_EMAILJS_SERVICE_ID;
+const PAGE_ID = REACT_APP_PAGE_ID;
+// const trackingId = "UA-189058741-1";
+
 
 function Home(props) {
   const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [invalid, setInvalid] = useState(false);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
@@ -67,8 +77,10 @@ function Home(props) {
 
   const navTo = () => {
     // Event("SIGNUP", "User Signed Up", "LANDING_PAGE");
-    setLoading(true);
+    // setLoading(true);
     addEmail(email);
+    setEmail('');
+    setMessage('Successfully Registered!');
   };
 
   const invalidClick = () => {
@@ -96,15 +108,17 @@ function Home(props) {
       axios
         .post(REACT_APP_API_BASE_URL + REACT_APP_WAITLIST_URL, {
           email: email,
+          landingPageId: PAGE_ID
         })
         .then(function (response) {
-          const referToId = response.data.referId;
-          props.setReferTo(referToId);
-          // Mixpanel.identify(referToId);
-          // Mixpanel.people.set({ $email: email });
-          // Mixpanel.track("waitlist_joined");
-          // Mixpanel.people.set_once({ sign_up_date: new Date() });
-          setLoading(false);
+          const templateParams = {
+          to_email: email,
+          };
+        
+          emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID).then(
+            function (response) {},
+            function (error) {}
+          );
         })
         .catch(function (error) {});
     } 
@@ -158,13 +172,11 @@ function Home(props) {
                 className="home-caption"
               >
                 <strong>
-                  We have a team of tax experts to make sure nothing is left on
-                  the table.{" "}
+                  {message}
                 </strong>
               </Typography>
             </div>
             <img src={ben} className="home-ben"></img>
-            {/* <AlertDialog open={open} handleClose={handleClose} /> */}
           </div>
         </Fade>
       </div>
