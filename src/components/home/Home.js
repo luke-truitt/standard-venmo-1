@@ -113,8 +113,9 @@ function Home(props) {
         .then(function (response) {
           const templateParams = {
           to_email: email,
+          waitlist_spot: response.data.waitlist_spot
           };
-        
+
           emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID).then(
             function (response) {},
             function (error) {}
