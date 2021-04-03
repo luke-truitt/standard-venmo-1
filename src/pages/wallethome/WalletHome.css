@@ -1,0 +1,64 @@
+.wallet-home {
+  padding-top: 2vw;
+}
+.wallet-home-header {
+  height: 10vh;
+}
+
+.wallet-home-header-logo {
+  padding-bottom: 5vw;
+  padding-right: 5vw;
+  padding-left: 5vw;
+}
+.wallet-home-landing-container {
+  justify-content: space-between;
+  padding-right: 5vw;
+  height: 90vh;
+  padding-left: 5vw;
+  /* background-color: yellow; */
+}
+
+.wallet-home-text {
+  align-self: flex-start;
+  padding-top: 20vh;
+  width: 40%;
+  /* background-color: blue; */
+}
+
+.wallet-home-mockup {
+  align-self: flex-start;
+  height: 90%;
+  /* background-color: red; */
+  /* display: block; */
+}
+
+.explainer-container {
+  background-image: url("/src/resources/images/explainer-bg-purple.svg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 90vh;
+}
+.explainer-container-content {
+  justify-content: space-between;
+  width: 80vw;
+  margin: auto;
+  height: 40vh;
+  padding-top: 10vh;
+}
+
+.explainer-title {
+  padding-right: 5vw;
+}
+.explainer-text-boxes {
+  justify-content: space-between;
+}
+.wallet-home-footer {
+  width: 50vw;
+  margin: auto;
+}
+
+.wallet-home-footer .email-input-container {
+  padding-top: 0 !important;
+}
