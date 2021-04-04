@@ -1,5 +1,9 @@
+div .app {
+  background-image: linear-gradient(#cc00ff, #000000) !important;
+}
+
 .lottery-home {
-  padding-top: 2vw;
+  padding-top: 5vh;
 }
 .lottery-home-header {
   height: 10vh;
@@ -11,8 +15,7 @@
   padding-left: 5vw;
 }
 .lottery-home-landing-container {
-  justify-content: space-between;
-  padding-right: 5vw;
+  justify-content: flex-start;
   height: 90vh;
   padding-left: 5vw;
   /* background-color: yellow; */
@@ -21,19 +24,19 @@
 .lottery-home-text {
   align-self: flex-start;
   padding-top: 20vh;
-  width: 40%;
-  /* background-color: blue; */
+  padding-right: 10vw;
+  width: 40vw;
 }
 
-.lottery-home-mockup {
+img.lottery-home-mockup {
   align-self: flex-start;
-  height: 90%;
-  /* background-color: red; */
-  /* display: block; */
+  width: auto;
+  height: auto;
+  max-height: 90vh;
 }
 
 .explainer-container {
-  background-image: url("/src/resources/images/explainer-bg-pink.svg");
+  background-image: url("/src/resources/images/explainer-bg-pink-web.svg");
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: center;
@@ -61,4 +64,77 @@
 
 .lottery-home-footer .email-input-container {
   padding-top: 0 !important;
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    text-align: center !important;
+  }
+
+  .explainer-container-content {
+    height: auto !important;
+    width: 90vw !important;
+  }
+  .lottery-home-text {
+    width: 90vw !important;
+    padding-right: 0 !important;
+    padding-bottom: 5vh;
+  }
+  .lottery-home-landing-container {
+    flex-direction: column !important;
+  }
+
+  .lottery-home-mockup {
+    width: 100vw !important;
+    margin-right: -10vw !important;
+    max-height: none !important;
+  }
+  .lottery-home-landing-container {
+    height: auto !important;
+  }
+  .explainer-container {
+    height: auto !important;
+    background-size: 100% auto !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: -25vh;
+    background-image: url("/src/resources/images/explainer-bg-pink-mobile.svg") !important;
+  }
+  .explainer-text-boxes {
+    flex-direction: column !important;
+    padding-bottom: 25vh;
+  }
+  .explainer-title {
+    padding-bottom: 10vw !important;
+  }
+  h3.explainer-title {
+    font-size: 2rem !important;
+    text-align: center;
+  }
+  .lottery-home-footer {
+    padding-top: 5vw;
+    width: 90vw !important;
+  }
+  h2.lottery-home-text-title {
+    font-size: 3rem !important;
+  }
+  .lottery-home-text {
+    padding-top: 10vh !important;
+  }
+  .lottery-home-header {
+    height: 5vh !important;
+  }
+  img.lottery-home-header-logo {
+    height: 60% !important;
+    opacity: 50%;
+  }
+  .waitlist-button-web-text {
+    display: none !important;
+  }
+  input {
+    height: 2vh !important;
+  }
+  label {
+    margin-top: -0.1rem !important;
+  }
 }
