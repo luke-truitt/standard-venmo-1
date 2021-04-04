@@ -31,21 +31,21 @@ function Home() {
   const explainerText = [
     {
       number: 1,
-      title: "A title is what happens",
+      title: "Get tickets",
       body:
-        "nd then heres an explanation of what really happens. Everything goes wow.",
+        "Deposit into any prize pool and instantly get tickets.",
     },
     {
       number: 2,
-      title: "A title is what happens",
+      title: "Win prizes",
       body:
-        "nd then heres an explanation of what really happens. Everything goes wow.",
+        "As long as you stay in the pool, you’re eligible to win. Prizes are made up of interest earned on money in the pools.",
     },
     {
       number: 3,
-      title: "A title is what happens",
+      title: "Never lose",
       body:
-        "nd then heres an explanation of what really happens. Everything goes wow.",
+        "Remove your deposit at any time. As long as you stay in the pool, you’re eligible to win.",
     },
   ];
   const keyDown = (e, val) => {
@@ -125,18 +125,18 @@ function Home() {
       <Box className="lottery-home-landing-container columns">
         <Box className="lottery-home-text rows">
          <Typography
-            variant="h2"		
+            variant="h4"		
             className="lottery-home-text-title"		
             color="primary"		
           >
-            The simplest intro to crypto
+            A lottery where you can only make money. Powered by Crypto.
           </Typography>
           <EmailInput buttonLabel={buttonLabel}  invalid={invalid} onKeyPress={(e, val) => keyDown(e, val)} submitEmail={submitEmail} emailValue={email} setEmail={setEmail} invalidClick={invalidClick}/>
-          <Typography variant="h5" color="primary">
+          <Typography variant="body" color="primary">
             {message}
           </Typography>
-          <Typography variant="h5" color="primary">
-            Store crypto and earn interest. No fees.
+          <Typography variant="h6" color="primary">
+            Money deposited into the lottery generates high interest which goes back to you in the form of prizes!
           </Typography>
         </Box>{" "}
         <Fade top>
