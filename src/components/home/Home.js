@@ -1,10 +1,10 @@
 import "../../global.css";
-import "./LotteryHome.css";
+import "./Home.css";
 import { Box, Typography, TextField, Button } from "@material-ui/core";
 import mockup from "../../resources/images/mockup-lottery.png";
 import headerLogo from "../../resources/images/logo-light.svg";
-import EmailInput from "../../components/EmailInput";
-import GradientTextBox from "../../components/GradientTextBox";
+import EmailInput from "../EmailInput";
+import GradientTextBox from "../GradientTextBox";
 import Fade from "react-reveal/Fade";
 import React, { useState } from "react";
 import * as emailjs from "emailjs-com";
@@ -21,10 +21,11 @@ const USER_ID = REACT_APP_EMAILJS_USER_ID;
 const TEMPLATE_ID = "template_b3u2bhe";
 const SERVICE_ID = REACT_APP_EMAILJS_SERVICE_ID;
 const PAGE_ID = REACT_APP_PAGE_ID;
-function LotteryHome() {  
+function Home() {  
   const axios = require("axios");
   const [email, setEmail] = useState("");
   const [email2, setEmail2] = useState("");
+  const [invalid, setInvalid] = useState(false);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const explainerText = [
@@ -47,17 +48,23 @@ function LotteryHome() {
         "nd then heres an explanation of what really happens. Everything goes wow.",
     },
   ];
-  // const keyDown = (e, val) => {
-  //   var code = e.keyCode || e.which;
-
-  //   if (code === 13 || code === 32 || code === 39) {
-  //     if (!val) {
-  //       invalidClick();
-  //     } else {
-  //       navTo();
-  //     }
-  //   }
-  // };
+  const keyDown = (e, val) => {
+    var code = e.keyCode || e.which;
+    if (code === 13 || code === 32 || code === 39) {
+      if (
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+          email
+        ) || /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+          email2
+        )
+      ) {
+        submitEmail();
+        setInvalid(false);
+      } else {
+        setInvalid(true);
+      }
+    }
+  };
   const addEmail = async (email) => {
       axios
         .post(REACT_APP_API_BASE_URL + REACT_APP_WAITLIST_URL, {
@@ -78,16 +85,20 @@ function LotteryHome() {
         })
         .catch(function (error) {console.log(error);});
     }
-
+    const invalidClick = () => {
+      setInvalid(true);
+    };
   const submitEmail = () => {
     // setLoading(true);
     if(email.length > 0) {
       addEmail(email);
       setEmail('');
+      setInvalid(false);
     }
     if(email2.length > 0) {
       addEmail(email2);
       setEmail2('');
+      setInvalid(false);
     }
     setMessage('Successfully Registered!');
   };
@@ -111,7 +122,7 @@ function LotteryHome() {
           <Typography variant="h2" color="primary">
             The simplest intro to crypto
           </Typography>
-          <EmailInput buttonLabel="Join Waitlist"  submitEmail={submitEmail} emailValue={email} setEmail={setEmail}/>
+          <EmailInput buttonLabel="Join Waitlist"  invalid={invalid} onKeyPress={(e, val) => keyDown(e, val)} submitEmail={submitEmail} emailValue={email} setEmail={setEmail} invalidClick={invalidClick}/>
           <Typography variant="h5" color="primary">
             {message}
           </Typography>
@@ -129,8 +140,7 @@ function LotteryHome() {
             <Typography
               className="explainer-title"
               variant="h3"
-              color="primary"
-            >
+              color="primary">
               How does it work?
             </Typography>
           </Fade>
@@ -140,10 +150,10 @@ function LotteryHome() {
         </Box>
       </Box>
       <Box className="lottery-home-footer">
-        <EmailInput buttonLabel="Join Waitlist" submitEmail={submitEmail} emailValue={email2} setEmail={setEmail2}/>
+        <EmailInput buttonLabel="Join Waitlist" invalid={invalid} onKeyPress={(e, val) => keyDown(e, val)} submitEmail={submitEmail} emailValue={email2} setEmail={setEmail2}/>
       </Box>
     </Box>
   );
 }
 
-export default LotteryHome;
+export default Home;
