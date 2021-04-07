@@ -16,6 +16,7 @@ import React, { useState, useEffect } from "react";
 import * as emailjs from "emailjs-com";
 import MuiAlert from "@material-ui/lab/Alert";
 import { makeStyles } from "@material-ui/core/styles";
+import ReactGA from 'react-ga';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
