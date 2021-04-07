@@ -1,5 +1,5 @@
 div .app {
-  background-image: linear-gradient(#cc00ff, #000000) !important;
+  background-image: linear-gradient(#f4f3ee, #f3eef4) !important;
 }
 
 .lottery-home {
@@ -16,10 +16,12 @@ div .app {
 }
 .lottery-home-landing-container {
   justify-content: flex-start;
-  height: 90vh;
+  height: 80vh;
   padding-left: 5vw;
 }
-
+.lottery-home-subtitle {
+  font-size: 1.5rem;
+}
 .lottery-home-text {
   align-self: flex-start;
   padding-top: 20vh;
@@ -35,26 +37,25 @@ img.lottery-home-mockup {
 }
 
 .explainer-container {
-  background-image: url("/src/resources/images/explainer-bg-pink-web.svg");
+  background-image: url("/src/resources/images/explainer-bg-light-web.svg");
   background-size: 100% auto;
   background-repeat: no-repeat;
-  background-position: center;
-  width: 100vw;
+  background-position: -3rem top;
+  width: 100vw !important;
+  margin: auto;
   height: 90vh;
 }
 .explainer-container-content {
-  justify-content: space-between;
-  width: 90vw;
+  width: 100vw;
   margin: auto;
-  height: 40vh;
-  padding-top: 10vh;
+  padding-top: 30vh;
 }
 
 .explainer-title {
   padding-right: 5vw;
 }
 .explainer-text-boxes {
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 20px;
 }
 .lottery-home-footer {
@@ -74,6 +75,12 @@ img.lottery-home-mockup {
   .explainer-container-content {
     height: auto !important;
     width: 90vw !important;
+  }
+  .lottery-home-text-title {
+    font-size: 2rem !important;
+  }
+  .lottery-home-subtitle {
+    font-size: 1.2rem !important;
   }
   .lottery-home-text {
     width: 90vw !important;
@@ -97,9 +104,9 @@ img.lottery-home-mockup {
     height: auto !important;
     background-size: 100% auto !important;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top;
     margin-bottom: -25vh;
-    background-image: url("/src/resources/images/explainer-bg-pink-mobile.svg") !important;
+    background-image: url("/src/resources/images/explainer-bg-light-mobile.svg") !important;
   }
   .explainer-text-boxes {
     flex-direction: column !important;
@@ -131,11 +138,5 @@ img.lottery-home-mockup {
   }
   .waitlist-button-web-text {
     display: none !important;
-  }
-  input {
-    height: 2vh !important;
-  }
-  label {
-    margin-top: -0.1rem !important;
   }
 }

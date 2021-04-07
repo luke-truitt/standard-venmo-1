@@ -8,7 +8,7 @@ import {
   Button,
 } from "@material-ui/core";
 import mockup from "../../resources/images/mockup-lottery.png";
-import headerLogo from "../../resources/images/logo-light.svg";
+import headerLogo from "../../resources/images/logo-purple.svg";
 import EmailInput from "../EmailInput";
 import GradientTextBox from "../GradientTextBox";
 import Fade from "react-reveal/Fade";
@@ -56,8 +56,7 @@ function Home() {
     {
       number: 3,
       title: "Never lose",
-      body:
-        "Remove your deposit at any time. As long as you stay in the pool, you’re eligible to win.",
+      body: "Remove your deposit from the pool at any time.",
     },
   ];
   const keyDown = (e, val) => {
@@ -174,11 +173,11 @@ function Home() {
       <Box className="lottery-home-landing-container columns">
         <Box className="lottery-home-text rows">
           <Typography
-            variant="h4"
+            variant="h3"
             className="lottery-home-text-title"
             color="primary"
           >
-            A lottery where you can only make money. Powered by Crypto.
+            The only lottery where you never lose money
           </Typography>
           <EmailInput
             buttonLabel={buttonLabel}
@@ -188,9 +187,13 @@ function Home() {
             setEmail={setEmail}
             invalidEmail={showError}
           />
-          <Typography variant="h6" color="primary">
-            Money deposited into the lottery generates high interest which goes
-            back to you in the form of prizes!
+          <Typography
+            className="lottery-home-subtitle"
+            variant="body"
+            color="primary"
+          >
+            We use interest earned on ticket deposits to fund lottery prizes so
+            you always get your original money back
           </Typography>
         </Box>{" "}
         <Fade top>
@@ -199,15 +202,15 @@ function Home() {
       </Box>
       <Box className="explainer-container">
         <Box className="explainer-container-content rows">
-          <Fade top>
+          {/* <Fade top>
             <Typography
               className="explainer-title"
-              variant="h3"
+              variant="h6"
               color="primary"
             >
               How does it work?
             </Typography>
-          </Fade>
+          </Fade> */}
           <Box className="explainer-text-boxes columns">
             {ExplainerTextBoxes}
           </Box>
