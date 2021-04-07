@@ -12,7 +12,7 @@ import headerLogo from "../../resources/images/logo-purple.svg";
 import EmailInput from "../EmailInput";
 import GradientTextBox from "../GradientTextBox";
 import Fade from "react-reveal/Fade";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as emailjs from "emailjs-com";
 import MuiAlert from "@material-ui/lab/Alert";
 import { makeStyles } from "@material-ui/core/styles";
@@ -110,6 +110,10 @@ function Home() {
       setEmail2("");
       setErrorMessage(false);
     }
+    ReactGA.event({
+      category: 'User',
+      action: 'Signed Up For Waitlist'
+    });
     setErrorMessage(false);
     setSuccessMessage(true);
   };
@@ -139,6 +143,9 @@ function Home() {
     setSuccessMessage(false);
     setErrorMessage(true);
   };
+  const useEffect = () => {
+    ReactGA.pageview('/');
+  }
   return (
     <Box className="lottery-home rows">
       <Snackbar
